@@ -30,9 +30,9 @@ module.exports  = {
     checkpasswordConfirmation:  check('passwordConfirmation')
                                     .trim()
                                     .isLength({min: 4, max: 20})
-                                    .custom((passwordConfirmation, {req})=>{
+                                    .custom(async(passwordConfirmation, {req})=>{
                                         if(passwordConfirmation !== req.body.password){
-                                        throw new Error('Passwords must match');
+                                            throw new Error('Passwords must match');
                                     }
                                 }),
     requireEmailExists:         check('email')
