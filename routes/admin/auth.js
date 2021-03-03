@@ -27,7 +27,7 @@ router.post('/signup',
         const user = await usersRepo.create({email: email, password: password});
         //store  the if of  that user inside the users cookie
         req.session.userId = user.id;
-        res.send('account created');
+        res.redirect('/admin/products');
     }
 );
 
@@ -50,7 +50,7 @@ router.post('/signin',
         const {email, password} = req.body;
         const user = await usersRepo.getOneBy({email});
         req.session.userId = user.id;
-        res.send('You are signed in');
+        res.redirect('/admin/products');
     
 }); 
 
